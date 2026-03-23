@@ -4,3 +4,4 @@
 !dags/
 !dags/**
 !dashboards
+!dashboards/**
