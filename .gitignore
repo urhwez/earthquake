@@ -3,5 +3,5 @@
 !docker-compose.yml
 !dags/
 !dags/**
-!dashboards
+!dashboards/
 !dashboards/**

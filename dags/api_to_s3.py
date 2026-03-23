@@ -32,21 +32,6 @@ def get_dates(**context) -> tuple[str, str]:
   
     return start_date, end_date
 
-def clear_existing_s3_file(start_date: str):
-    """Удаляем старый файл, если он существует (идемпотентность)"""
-    s3 = boto3.client(
-        "s3",
-        aws_access_key_id=ACCESS_KEY,
-        aws_secret_access_key=SECRET_KEY,
-        endpoint_url=S3_ENDPOINT,
-    )
-    key = f"{LAYER}/{SOURCE}/{start_date}/{start_date}_00-00-00.parquet"
-    try:
-        s3.delete_object(Bucket=BUCKET, Key=key)
-        logging.info(f"Old file deleted from S3: {key}")
-    except Exception as e:
-        logging.warning(f"No existing file to delete: {key}. {e}")
-
 
 def get_and_transfer_api_data_to_s3(**context):
 

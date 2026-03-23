@@ -5,17 +5,17 @@ from airflow.providers.common.sql.operators.sql import SQLExecuteQueryOperator
 from airflow.sensors.external_task import ExternalTaskSensor
 from airflow.timetables.interval import CronDataIntervalTimetable
 
-# Конфигурация DAG
+
 OWNER = "dementev"
 DAG_ID = "fct_earthquake_map"
 
-# Используемые таблицы в DAG
+
 LAYER = "raw"
 SOURCE = "earthquake"
 SCHEMA = "dm"
 TARGET_TABLE = "fct_earthquake_map"
 
-# DWH
+
 PG_CONNECT = "postgres_dwh"
 
 LONG_DESCRIPTION = """
@@ -53,8 +53,8 @@ with DAG(
         external_dag_id="s3_to_pg",
         allowed_states=["success"],
         mode="reschedule",
-        timeout=360000,  # длительность работы сенсора
-        poke_interval=60,  # частота проверки
+        timeout=360000, 
+        poke_interval=60,  
     )
 
     drop_stg_table_before = SQLExecuteQueryOperator(
@@ -73,7 +73,7 @@ with DAG(
         sql=f"""
         CREATE TABLE stg."tmp_{TARGET_TABLE}_{{{{ data_interval_start.format('YYYY-MM-DD') }}}}" AS
         SELECT
-            time::date AS date,            -- нужен для фильтра по дате
+            time::date AS date,
             ROUND(latitude::numeric, 2) AS lat,
             ROUND(longitude::numeric, 2) AS lon,
             COUNT(*) AS earthquake_count,
