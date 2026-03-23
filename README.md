@@ -27,10 +27,6 @@ flowchart LR
         end
     end
 
-    subgraph BI
-        MetaBase
-    end
-
     API_E -->|Extract Data| AirFlow
     AirFlow -->|Load Data| S3
     S3 -->|Extract Data| AirFlow
