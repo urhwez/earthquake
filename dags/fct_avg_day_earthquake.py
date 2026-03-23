@@ -6,7 +6,7 @@ from airflow.sensors.external_task import ExternalTaskSensor
 from airflow.timetables.interval import CronDataIntervalTimetable
 
 # Конфигурация DAG
-OWNER = "i.korsakov"
+OWNER = "dementev"
 DAG_ID = "fct_avg_day_earthquake"
 
 # Используемые таблицы в DAG
