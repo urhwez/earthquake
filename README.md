@@ -1,5 +1,6 @@
-# earthquake
-
+# Earthquake Data Pipeline & Visualization
+Проект представляет собой полный ETL-пайплайн для сбора, обработки и визуализации данных о землетрясениях.
+Данные загружаются из внешнего API, сохраняются в S3-хранилище, обрабатываются через Airflow и загружаются в PostgreSQL. На основе подготовленных витрин строятся интерактивные дашборды.
 ## Архитектура проекта
 
 ```mermaid
@@ -35,5 +36,8 @@ flowchart LR
     AirFlow -->|Load Data to ODS| ods
     ods -->|Extract Data| AirFlow
     AirFlow -->|Transform and Load Data to DM| dm
-    dm -->|Visualize Data| MetaBase
+    dm -->|Visualize Data| PowerBI
 ```
+![Map](dashboards/map.png)
+![Avg](dashboards/avg.png)
+![Count](count/map.png)
