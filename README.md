@@ -41,7 +41,6 @@ flowchart LR
 ```
 ![Map](dashboards/map.png)
 ![Avg](dashboards/avg.png)
-![Count](count/map.png)
+![Count](dashboards/count.png)
 =======
-# earthquakecommit 
->>>>>>> f1d3bc7 (добавил дашборды)
+
